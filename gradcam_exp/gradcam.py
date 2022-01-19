@@ -1,0 +1,17 @@
+import numpy as np
+from .basecam import BaseCAM
+
+
+class GradCAM(BaseCAM):
+    def __init__(self, model, target_layer, use_cuda=False, reshape_transform=None):
+        super(GradCAM, self).__init__(model, target_layer, use_cuda, reshape_transform)
+
+    def get_cam_weights(self,
+                        input_tensor,
+                        target_category,
+                        activations,
+                        grads):
+        if len(grads.shape) == 3:
+            return np.mean(grads[:, :, :], axis=(1, 2))
+        else:
+            return np.mean(grads[:, :], axis=(1))
