@@ -22,7 +22,7 @@ python predict.py
 "tsne" dimensionality reduction algorithm applied to the features at the output of the "linear2" layer
 
 ```
-python 
+python explain_cls.py
 ```
 
 ## Visualization Module
